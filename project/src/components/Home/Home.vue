@@ -19,10 +19,10 @@
     </nav>
 
     <!-- Box abaixo menu -->
-    <div style="height: 100vh; justify-content: center; display: flex;">
+    <div style="height: 100vh;">
       <!-- Box da publicacao -->
       <div
-        style="border: 2.5px solid #DBDBDB; height: 80vh; width: 150vh; margin-top: 25px; display: flex;"
+        style="border: 2.5px solid #DBDBDB; height: 80vh; width: 150vh; margin-top: 25px; display: flex; margin: 23px auto;"
       >
         <!-- Imagem do post -->
         <div style="height: 100%; width: 60%;">
@@ -61,6 +61,10 @@
           </div>
         </div>
       </div>
+
+      <div
+        style="border-bottom: 1px solid #DBDBDB; width: 150vh; margin: 40px auto;"
+      ></div>
     </div>
   </div>
 </template>
