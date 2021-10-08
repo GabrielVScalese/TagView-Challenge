@@ -7,18 +7,15 @@
           <a style="color: black; font-family: Arial;">Taggram</a>
         </li>
         <li style="float: right; margin-right: 100px;">
-          <a>
-            <div
-              class="image"
-              style="width: 25px; height: 25px; background: red;-moz-border-radius: 50px;-webkit-border-radius: 50px; border-radius: 50px;"
-            ></div
-          ></a>
-        </li>
-        <li style="float: right; ">
-          <a style="color: black;">{{ username }}</a>
+          <div style="horizontal-align: middle; float: left; display: flex;">
+            <a style="color: black;">{{ username }}</a>
+            <img style="border-radius: 50%; height: 30px;" :src="this.avatar" />
+          </div>
         </li>
       </ul>
     </nav>
+
+    <div></div>
   </div>
 </template>
 
@@ -32,7 +29,7 @@ export default {
   },
   data() {
     return {
-      username: "teste",
+      username: "Pesquisando...",
       avatar: "",
     };
   },
