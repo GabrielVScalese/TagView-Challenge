@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100%">
+  <div style="height: 170vh;">
     <!-- Menu Bar -->
     <nav style="border-bottom: 2.5px solid #DBDBDB; margin: 0;">
       <ul style="margin-left: 100px;">
@@ -10,7 +10,7 @@
           <div style="horizontal-align: middle; float: left; display: flex;">
             <a style="color: black;">{{ username }}</a>
             <img
-              style="border-radius: 50%; height: 30px;"
+              style="border-radius: 50%; height: 30px; margin-top: 5%;"
               :src="getAvatar(this.avatar)"
             />
           </div>
@@ -29,44 +29,70 @@
           <img style="width: 100%; height: 100%;" :src="this.post['photo']" />
         </div>
         <!-- Autor e comentarios -->
-        <div style="height: 100%; width: 40%; float: left;">
+        <div
+          style="height: 100%; width: 40%; float: left; border-left: 1px solid  #DBDBDB"
+        >
           <!-- Autor -->
           <div
             style="border-bottom: 1px solid  #DBDBDB; width: 100%; height: 15%; position: relative;"
           >
             <img
-              style="border-radius: 50%; height: 30px; float: left; top: 50%;"
+              style="border-radius: 50%; height: 30px; float: left; margin-top: 5%; margin-left: 4%; margin-right: 4%;"
               :src="getAvatar(this.post['user']['avatar'])"
             />
-            <div style="float: left; ">
-              <p>{{ this.post["user"]["username"] }}</p>
-              <p>
+            <div style="float: left; text-align: left; margin-top: 5%;">
+              <span style="font-weight: bold; font-size: 14.5px;">{{
+                this.post["user"]["username"]
+              }}</span>
+              <br />
+              <span style="font-size: 13px;">
                 {{ this.post["location"]["city"] }},
                 {{ this.post["location"]["country"] }}
-              </p>
+              </span>
             </div>
           </div>
           <div
-            style="border-bottom: 1px solid #DBDBDB; width: 100%; height: 65%; text-align: center;"
+            style="border-bottom: 1px solid #DBDBDB; width: 100%; height: 70%; text-align: center;"
           ></div>
-          <div style=" width: 100%; height: 20%;">
-            <p
-              style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black; "
+          <div
+            style=" width: 100%; height: 15%; text-align: left; padding-top: 5%;"
+          >
+            <span
+              style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black; margin-top: 5%;"
             >
               {{ this.post["comments"].length }} comentários
-            </p>
-            <p
-              style="font-weight: bold; margin: 20px; font-family: Arial; font-size: 13px; color: black;"
+            </span>
+            <br />
+            <span
+              style="font-weight: bold; margin: 20px; font-family: Arial; font-size: 11px; color: #8E8E8E;"
             >
               {{ this.post["created_at"] }}
-            </p>
+            </span>
           </div>
         </div>
       </div>
 
+      <div style="justify-content:center; display: flex; ">
+        <div style="width: 150vh; border: 1px solid #EFEFEF"></div>
+      </div>
+
       <div
-        style="border-bottom: 1px solid #DBDBDB; width: 150vh; margin: 40px auto;"
-      ></div>
+        style="width: 150vh; height: 50vh; margin-top: 30px; margin: auto; text-align: left; padding-top: 20px;"
+      >
+        <span style="color: #8E8E8E; font-weight: bold; "
+          >Mais publicações</span
+        >
+        <div
+          style="margin-top: 20px; justify-content: space-between; display: flex; flex-wrap: wrap;"
+        >
+          <img
+            v-for="relatedPost in this.relatedPosts"
+            :key="relatedPost"
+            :src="relatedPost.photo"
+            style="height: 280px; width: 280px; margin-bottom: 45px;"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -84,6 +110,7 @@ export default {
       username: "Pesquisando...",
       avatar: "",
       post: {},
+      relatedPosts: [],
     };
   },
   methods: {
@@ -93,19 +120,23 @@ export default {
         : this.avatar;
     },
   },
-  async created() {
+  async beforeCreate() {
     const userResponse = await axios.get("https://taggram.herokuapp.com/me");
     this.username = userResponse["data"]["username"];
     this.avatar = userResponse["data"]["avatar"];
 
-    const url = `https://taggram.herokuapp.com/post?username=${this.username}`;
+    let url = `https://taggram.herokuapp.com/post?username=${this.username}`;
     const postResponse = await axios.get(url);
     this.post = postResponse["data"];
+
+    const relatedPostResponse = await axios.get(
+      `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
+    );
+    this.relatedPosts = relatedPostResponse.data;
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 /* Menu Bar */
 ul {
