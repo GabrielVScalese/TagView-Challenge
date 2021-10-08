@@ -31,12 +31,14 @@
         <!-- Autor e comentarios -->
         <div style="height: 100%; width: 40%; float: left;">
           <!-- Autor -->
-          <div style="border: 1px solid red; width: 100%; height: 15%;">
+          <div
+            style="border-bottom: 1px solid  #DBDBDB; width: 100%; height: 15%; position: relative;"
+          >
             <img
-              style="border-radius: 50%; height: 30px; float: left; "
+              style="border-radius: 50%; height: 30px; float: left; top: 50%;"
               :src="getAvatar(this.post['user']['avatar'])"
             />
-            <div style="float: left; margin-left: 20px;">
+            <div style="float: left; ">
               <p>{{ this.post["user"]["username"] }}</p>
               <p>
                 {{ this.post["location"]["city"] }},
@@ -45,9 +47,9 @@
             </div>
           </div>
           <div
-            style="border: 1px solid red; width: 100%; height: 65%; text-align: center;"
+            style="border-bottom: 1px solid #DBDBDB; width: 100%; height: 65%; text-align: center;"
           ></div>
-          <div style="border: 1px solid red; width: 100%; height: 20%;">
+          <div style=" width: 100%; height: 20%;">
             <p
               style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black; "
             >
