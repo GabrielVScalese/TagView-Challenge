@@ -69,12 +69,12 @@
         </div>
       </div>
 
-      <div style="justify-content:center; display: flex; padding-top: 25px;">
+      <div style="justify-content:center; display: flex; ">
         <div style="width: 150vh; border: 1px solid #EFEFEF"></div>
       </div>
 
       <div
-        style="width: 150vh; height: 50vh; margin: auto; text-align: left; padding-top: 20px;"
+        style="width: 150vh; height: 50vh; margin-top: 30px; margin: auto; text-align: left; padding-top: 20px;"
       >
         <span style="color: #8E8E8E; font-weight: bold; "
           >Mais publicações</span
@@ -117,30 +117,21 @@ export default {
         ? "https://lh3.googleusercontent.com/a/default-user=s40-c"
         : this.avatar;
     },
-    // goToRelated(postId) {
-    //   this.$router.push(`/relatedPost/${postId}`);
-    // },
   },
   async beforeCreate() {
-    const userResponse = await axios.get("https://taggram.herokuapp.com/me");
-    this.username = userResponse["data"]["username"];
-    this.avatar = userResponse["data"]["avatar"];
-
-    let url = `https://taggram.herokuapp.com/post?username=${this.username}`;
-    const postResponse = await axios.get(url);
-    this.post = postResponse["data"];
-
-    const relatedPostResponse = await axios.get(
-      `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
-    );
-    const posts = relatedPostResponse.data;
-
-    for (let i = 0; i < posts.length; i++) {
-      if (posts[i]["comment_count"] >= 3) this.relatedPosts.push(posts[i]);
-    }
-
-    console.log(this.relatedPosts);
+    console.log(this.$route.params);
+    // const userResponse = await axios.get("https://taggram.herokuapp.com/me");
+    // this.username = userResponse["data"]["username"];
+    // this.avatar = userResponse["data"]["avatar"];
+    // let url = `https://taggram.herokuapp.com/post?username=${this.username}`;
+    // const postResponse = await axios.get(url);
+    // this.post = postResponse["data"];
+    // const relatedPostResponse = await axios.get(
+    //   `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
+    // );
+    // this.relatedPosts = relatedPostResponse.data;
   },
+  goToRelated() {},
 };
 </script>
 
