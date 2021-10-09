@@ -1,10 +1,12 @@
 <template>
   <div style="height: 170vh;">
     <!-- Menu Bar -->
-    <nav style="border-bottom: 2.5px solid #DBDBDB; margin: 0;">
+    <nav
+      style="border-bottom: 2.5px solid #DBDBDB; margin: 0; padding-bottom: 0;"
+    >
       <ul style="margin-left: 100px;">
         <li style="float: left;">
-          <a style="color: black; font-family: Arial;">Taggram</a>
+          <a><img src="../../assets/taggram.png"/></a>
         </li>
         <li style="float: right; margin-right: 100px;">
           <div style="horizontal-align: middle; float: left; display: flex;">
@@ -34,7 +36,7 @@
         >
           <!-- Autor -->
           <div
-            style="border-bottom: 1px solid  #DBDBDB; width: 100%; height: 15%; position: relative;"
+            style="border-bottom: 1px solid  #DBDBDB; width: 100%; height: 15%;"
           >
             <img
               style="border-radius: 50%; height: 30px; float: left; margin-top: 5%; margin-left: 4%; margin-right: 4%;"
@@ -46,13 +48,60 @@
               }}</span>
               <br />
               <span style="font-size: 13px;">
-                Teste, Teste
+                {{ this.post["location"]["city"] }},
+                {{ this.post["location"]["country"] }}
               </span>
             </div>
           </div>
           <div
-            style="border-bottom: 1px solid #DBDBDB; width: 100%; height: 70%; text-align: center;"
-          ></div>
+            style="border-bottom: 1px solid #DBDBDB; width: 100%; height: 70%; text-align: center; overflow: scroll; overflow-x: hidden;"
+          >
+            <div
+              v-for="(comment, index) in this.post['comments']"
+              :key="index"
+              style="height: auto; overflow: hidden; width: 100%; flex-wrap: wrap; margin-bottom: 10px;"
+            >
+              <div
+                style="float: left; margin-top: 4%; width: 10; padding-left: 15px;"
+              >
+                <img
+                  style="border-radius: 50%; height: 30px; float: left; margin-left: 4%; margin-right: 4%;"
+                  :src="getAvatar(comment['user']['avatar'])"
+                />
+              </div>
+              <div
+                style="float: left; text-align: left; margin-top: 4%; width: 60%; padding-left: 18px; word-wrap: break-word; display: inline-block;"
+              >
+                <div>
+                  <span
+                    style="font-size: 12px; font-weight: bold; font-family: Arial;"
+                    >{{ comment["user"]["username"] }}
+                  </span>
+                  <span style="font-size: 12px; font-family: Arial;">
+                    {{ comment["message"] }}
+                  </span>
+                </div>
+                <div style="margin-top: 4%;">
+                  <span style="font-size: 12px; color: #8E8E8E;">
+                    {{ timeOfLike(comment["created_at"]) }}h
+                  </span>
+                  <span
+                    style="font-size: 12px; color: #8E8E8E; margin-left: 10px;"
+                  >
+                    {{ comment["like_count"] }} curtidas</span
+                  >
+                </div>
+              </div>
+              <div
+                style="width: 10%; float: right; margin-top: 7%; padding-right: 5px;"
+              >
+                <img
+                  style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
+                  src="../../assets/likeHeart.png"
+                />
+              </div>
+            </div>
+          </div>
           <div
             style=" width: 100%; height: 15%; text-align: left; padding-top: 5%;"
           >
@@ -78,7 +127,7 @@
       <div
         style="width: 150vh; height: 50vh; margin: auto; text-align: left; padding-top: 20px;"
       >
-        <span style="color: #8E8E8E; font-weight: bold; "
+        <span style="color: #8E8E8E; font-weight: bold; font-size: 14px;"
           >Mais publicações</span
         >
         <div
@@ -98,7 +147,6 @@
 
 <script>
 import axios from "axios";
-import router from "../../router/index";
 
 export default {
   name: "HelloWorld",
@@ -119,6 +167,14 @@ export default {
         ? "https://lh3.googleusercontent.com/a/default-user=s40-c"
         : avatar;
     },
+    timeOfLike(stringDate) {
+      const date = new Date(stringDate);
+      const nowDate = Date.now();
+      const diff = Math.abs(date - nowDate);
+      const hours = Math.ceil(diff / (1000 * 60 * 60));
+
+      return hours;
+    },
     // goToRelated(postId) {
     //   this.$router.push(`/relatedPost/${postId}`);
     // },
@@ -131,7 +187,6 @@ export default {
     let url = `https://taggram.herokuapp.com/post?username=${this.username}`;
     const postResponse = await axios.get(url);
     this.post = postResponse["data"];
-    console.log(this.post);
 
     const relatedPostResponse = await axios.get(
       `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
