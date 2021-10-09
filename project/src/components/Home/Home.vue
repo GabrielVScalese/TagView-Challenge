@@ -93,19 +93,19 @@
               <div
                 style="width: 10%; float: right; margin-top: 7%; padding-right: 5px;"
               >
-                <img
+                <font-awesome-icon
+                  icon="heart"
                   class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
-                  style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
                   :src="liked"
                   v-if="comment['has_liked']"
                 />
-                <img
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
                   class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
-                  style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
-                  :src="unliked"
-                  v-if="comment['has_liked'] == false"
+                  :src="liked"
+                  v-if="!comment['has_liked']"
                 />
               </div>
             </div>
