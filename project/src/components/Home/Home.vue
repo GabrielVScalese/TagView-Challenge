@@ -96,9 +96,16 @@
                 style="width: 10%; float: right; margin-top: 7%; padding-right: 5px;"
               >
                 <img
-                  v-on:click="setLike(comment['uuid'])"
+                  v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
-                  :src="comment['has_like'] ? liked : unliked"
+                  :src="liked"
+                  v-if="comment['has_liked']"
+                />
+                <img
+                  v-on:click="setLike(comment['uuid'], comment['has_liked'])"
+                  style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
+                  :src="unliked"
+                  v-if="comment['has_liked'] == false"
                 />
               </div>
             </div>
@@ -178,7 +185,37 @@ export default {
 
       return hours;
     },
-    setLike(likeStatus) {},
+    async sendLike(commentUuid) {
+      const response = await axios.post(
+        `https://taggram.herokuapp.com/comments/${commentUuid}/like?force=true`,
+        { username: this.username }
+      );
+
+      console.log(response);
+    },
+    async removeLike(commentUuid) {
+      const response = await axios.post(
+        `https://taggram.herokuapp.com/comments/${commentUuid}/unlike?force=true`,
+        { username: this.username }
+      );
+      console.log(this.username);
+      console.log(response);
+    },
+    async setLike(commentUuid, likeStatus) {
+      for (let i = 0; i < this.post["comments"].length; i++) {
+        if (this.post["comments"][i]["uuid"] == commentUuid) {
+          this.post["comments"][i]["has_liked"] = !likeStatus;
+
+          if (this.post["comments"][i]["has_liked"]) {
+            this.post["comments"][i]["like_count"]++;
+            await this.sendLike(commentUuid);
+          } else {
+            this.post["comments"][i]["like_count"]--;
+            await this.removeLike(commentUuid);
+          }
+        }
+      }
+    },
     // goToRelated(postId) {
     //   this.$router.push(`/relatedPost/${postId}`);
     // },
