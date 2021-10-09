@@ -96,13 +96,14 @@
                 <font-awesome-icon
                   icon="heart"
                   class="like"
-                  style="color: #ED4956;"
+                  style="color: #ED4956; height: 2.4vh;"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   :src="liked"
                   v-if="comment['has_liked']"
                 />
                 <font-awesome-icon
                   :icon="['far', 'heart']"
+                  style="height: 2.4vh;"
                   class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   :src="liked"
