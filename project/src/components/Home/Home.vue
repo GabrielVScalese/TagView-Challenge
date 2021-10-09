@@ -38,10 +38,12 @@
           >
             <img
               style="border-radius: 50%; height: 30px; float: left; margin-top: 5%; margin-left: 4%; margin-right: 4%;"
-              :src="getAvatar(this.avatar)"
+              :src="getAvatar(this.post['user']['avatar'])"
             />
             <div style="float: left; text-align: left; margin-top: 5%;">
-              <span style="font-weight: bold; font-size: 14.5px;">Teste</span>
+              <span style="font-weight: bold; font-size: 14.5px;">{{
+                this.post["user"]["username"]
+              }}</span>
               <br />
               <span style="font-size: 13px;">
                 Teste, Teste
@@ -57,13 +59,13 @@
             <span
               style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black; margin-top: 5%;"
             >
-              Teste comentários
+              {{ this.post["comments"].length }} comentários
             </span>
             <br />
             <span
               style="font-weight: bold; margin: 20px; font-family: Arial; font-size: 11px; color: #8E8E8E;"
             >
-              Teste
+              {{ this.post["created_at"] }}
             </span>
           </div>
         </div>
@@ -115,13 +117,13 @@ export default {
     getAvatar(avatar) {
       return avatar == null
         ? "https://lh3.googleusercontent.com/a/default-user=s40-c"
-        : this.avatar;
+        : avatar;
     },
     // goToRelated(postId) {
     //   this.$router.push(`/relatedPost/${postId}`);
     // },
   },
-  async beforeCreate() {
+  async mounted() {
     const userResponse = await axios.get("https://taggram.herokuapp.com/me");
     this.username = userResponse["data"]["username"];
     this.avatar = userResponse["data"]["avatar"];
@@ -129,6 +131,7 @@ export default {
     let url = `https://taggram.herokuapp.com/post?username=${this.username}`;
     const postResponse = await axios.get(url);
     this.post = postResponse["data"];
+    console.log(this.post);
 
     const relatedPostResponse = await axios.get(
       `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
@@ -138,8 +141,6 @@ export default {
     for (let i = 0; i < posts.length; i++) {
       if (posts[i]["comment_count"] >= 3) this.relatedPosts.push(posts[i]);
     }
-
-    console.log(this.relatedPosts);
   },
 };
 </script>
