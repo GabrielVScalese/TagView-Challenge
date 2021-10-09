@@ -242,9 +242,6 @@ export default {
         }
       }
     },
-    // goToRelated(postId) {
-    //   this.$router.push(`/relatedPost/${postId}`);
-    // },
   },
   async mounted() {
     const userResponse = await axios.get("https://taggram.herokuapp.com/me");
