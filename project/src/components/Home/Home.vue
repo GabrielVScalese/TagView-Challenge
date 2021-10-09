@@ -96,8 +96,9 @@
                 style="width: 10%; float: right; margin-top: 7%; padding-right: 5px;"
               >
                 <img
+                  v-on:click="setLike(comment['uuid'])"
                   style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
-                  src="../../assets/likeHeart.png"
+                  :src="comment['has_like'] ? liked : unliked"
                 />
               </div>
             </div>
@@ -159,6 +160,8 @@ export default {
       avatar: "",
       post: {},
       relatedPosts: [],
+      liked: "https://i.imgur.com/pbkWZrB.png",
+      unliked: "https://i.imgur.com/s9kfiiE.png",
     };
   },
   methods: {
@@ -175,6 +178,7 @@ export default {
 
       return hours;
     },
+    setLike(likeStatus) {},
     // goToRelated(postId) {
     //   this.$router.push(`/relatedPost/${postId}`);
     // },
