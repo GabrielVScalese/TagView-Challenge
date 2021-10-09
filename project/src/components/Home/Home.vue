@@ -60,7 +60,7 @@
               style="height: auto; overflow: hidden; width: 100%; flex-wrap: wrap; margin-bottom: 10px;"
             >
               <div
-                style="float: left; margin-top: 4%; width: 10; padding-left: 15px;"
+                style="float: left; margin-top: 4%; width: 5%; padding-left: 13px; "
               >
                 <img
                   style="border-radius: 50%; height: 30px; float: left; margin-left: 4%; margin-right: 4%;"
@@ -68,34 +68,35 @@
                 />
               </div>
               <div
-                style="float: left; text-align: left; margin-top: 4%; width: 60%; padding-left: 18px; word-wrap: break-word; display: inline-block;"
+                style="float: left; text-align: left; margin-top: 4%; width: 70%; padding-left: 25px; word-wrap: break-word; display: inline-block;"
               >
                 <div>
                   <span
-                    style="font-size: 12px; font-weight: bold; font-family: Arial;"
+                    style="font-size: 13px; font-weight: bold; font-family: Arial;"
                     >{{ comment["user"]["username"] }}
                   </span>
-                  <span style="font-size: 12px; font-family: Arial;">
+                  <span style="font-size: 13px; font-family: Arial;">
                     {{ comment["message"] }}
                   </span>
                 </div>
                 <div style="margin-top: 4%;">
-                  <span style="font-size: 12px; color: #8E8E8E;">
+                  <span style="font-size: 13px; color: #8E8E8E;">
                     {{ timeOfLike(comment["created_at"]) }}h
                   </span>
                   <span
-                    style="font-size: 12px; color: #8E8E8E; margin-left: 10px;"
+                    style="font-size: 12px; color: #8E8E8E; margin-left: 10px; font-weight: bold;"
                   >
                     {{ comment["like_count"] }} curtidas</span
                   >
                 </div>
               </div>
               <div
-                style="width: 10%; float: right; margin-top: 7%; padding-right: 5px;"
+                style="width: 5%; float: right; margin-top: 7%; padding-right: 12px;"
               >
                 <font-awesome-icon
                   icon="heart"
                   class="like"
+                  style="color: #ED4956;"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   :src="liked"
                   v-if="comment['has_liked']"
