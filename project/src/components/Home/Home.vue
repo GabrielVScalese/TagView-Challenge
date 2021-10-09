@@ -96,12 +96,14 @@
                 style="width: 10%; float: right; margin-top: 7%; padding-right: 5px;"
               >
                 <img
+                  class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
                   :src="liked"
                   v-if="comment['has_liked']"
                 />
                 <img
+                  class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   style="border-radius: 50%; height: 15px; float: left; margin-left: 4%; margin-right: 4%;"
                   :src="unliked"
@@ -186,32 +188,56 @@ export default {
       return hours;
     },
     async sendLike(commentUuid) {
-      const response = await axios.post(
-        `https://taggram.herokuapp.com/comments/${commentUuid}/like?force=true`,
-        { username: this.username }
-      );
+      try {
+        const response = await axios.post(
+          `https://taggram.herokuapp.com/comments/${commentUuid}/like`,
+          { username: this.username }
+        );
 
-      console.log(response);
+        return response.status;
+      } catch (err) {
+        return 500;
+      }
     },
     async removeLike(commentUuid) {
-      const response = await axios.post(
-        `https://taggram.herokuapp.com/comments/${commentUuid}/unlike?force=true`,
-        { username: this.username }
-      );
-      console.log(this.username);
-      console.log(response);
+      try {
+        const response = await axios.post(
+          `https://taggram.herokuapp.com/comments/${commentUuid}/unlike`,
+          { username: this.username }
+        );
+
+        return response.status;
+      } catch (err) {
+        return 500;
+      }
     },
     async setLike(commentUuid, likeStatus) {
       for (let i = 0; i < this.post["comments"].length; i++) {
         if (this.post["comments"][i]["uuid"] == commentUuid) {
-          this.post["comments"][i]["has_liked"] = !likeStatus;
-
           if (this.post["comments"][i]["has_liked"]) {
-            this.post["comments"][i]["like_count"]++;
-            await this.sendLike(commentUuid);
+            const statusCode = await this.removeLike(commentUuid);
+
+            console.log(statusCode);
+            if (statusCode != 200)
+              window.alert(
+                "Não foi possível curtir/descurtir comentário, tente novamente"
+              );
+            else {
+              this.post["comments"][i]["has_liked"] = !likeStatus;
+              this.post["comments"][i]["like_count"]--;
+            }
           } else {
-            this.post["comments"][i]["like_count"]--;
-            await this.removeLike(commentUuid);
+            const statusCode = await this.sendLike(commentUuid);
+
+            console.log(statusCode);
+            if (statusCode != 200)
+              window.alert(
+                "Não foi possível curtir/descurtir comentário, tente novamente"
+              );
+            else {
+              this.post["comments"][i]["has_liked"] = !likeStatus;
+              this.post["comments"][i]["like_count"]++;
+            }
           }
         }
       }
@@ -264,5 +290,9 @@ li a {
 
 div.image {
   content: url("https://cdn.fakercloud.com/avatars/mhesslow_128.jpg");
+}
+
+.like:hover {
+  cursor: pointer;
 }
 </style>
