@@ -10,9 +10,9 @@
         </li>
         <li style="float: right; margin-right: 100px;">
           <div style="horizontal-align: middle; float: left; display: flex;">
-            <a style="color: black;">{{ username }}</a>
+            <a style="color: black; margin-top: 3%; ">{{ username }}</a>
             <img
-              style="border-radius: 50%; height: 30px; margin-top: 5%;"
+              style="border-radius: 50%; height: 30px; margin-top: 6%;"
               :src="getAvatar(this.avatar)"
             />
           </div>
