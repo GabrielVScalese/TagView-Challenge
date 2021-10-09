@@ -1,18 +1,16 @@
 <template>
   <div style="height: 170vh;">
     <!-- Menu Bar -->
-    <nav
-      style="border-bottom: 2.5px solid #DBDBDB; margin: 0; padding-bottom: 0;"
-    >
+    <nav style="border-bottom: 2.5px solid #DBDBDB; ">
       <ul style="margin-left: 100px;">
         <li style="float: left;">
           <a><img src="../../assets/taggram.png"/></a>
         </li>
         <li style="float: right; margin-right: 100px;">
-          <div style="horizontal-align: middle; float: left; display: flex;">
-            <a style="color: black; margin-top: 3%; ">{{ username }}</a>
+          <div style="border: 1px solid red; display: flex; margin-top: 6%;">
+            <a style="color: black; ">{{ username }}</a>
             <img
-              style="border-radius: 50%; height: 30px; margin-top: 6%;"
+              style="border-radius: 50%; height: 30px; float: left;"
               :src="getAvatar(this.avatar)"
             />
           </div>
@@ -165,7 +163,7 @@ export default {
   },
   data() {
     return {
-      username: "Pesquisando...",
+      username: "",
       avatar: "",
       post: {},
       relatedPosts: [],
