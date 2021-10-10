@@ -1,5 +1,5 @@
 <template>
-  <div id="fullPage">
+  <div id="fullPage" v-if="!loading">
     <!-- Menu Bar -->
     <nav id="navBar">
       <ul id="menuContent">
@@ -118,6 +118,7 @@ export default {
       avatar: "",
       post: {},
       relatedPosts: [],
+      loading: true,
     };
   },
   methods: {
@@ -221,6 +222,8 @@ export default {
     for (let i = 0; i < posts.length; i++) {
       if (posts[i]["comment_count"] >= 3) this.relatedPosts.push(posts[i]);
     }
+
+    this.loading = false;
   },
 };
 </script>
