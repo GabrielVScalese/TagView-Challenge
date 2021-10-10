@@ -1,16 +1,20 @@
 /* Box de toda a pagina */
 
-#fullPage {
-  height: 170vh;
+body {
+  margin: 0;
+  overflow-x: hidden;
 }
 
 /* Menu Bar */
 
 #navBar {
-  border-bottom: 2.3px solid #dbdbdb;
+  border-bottom: 1.8px solid #dbdbdb;
   width: 100%;
   padding-top: 0.5%;
-  padding-bottom: 0.2%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  background-color: white;
+  margin: 0;
 }
 
 ul {
@@ -25,7 +29,6 @@ ul {
   justify-content: space-between;
   display: flex;
   margin: 0;
-  padding-bottom: 10px;
 }
 
 #logoBox {
@@ -37,7 +40,7 @@ ul {
 }
 
 #userBox {
-  margin-right: 7%;
+  margin-right: 9%;
   height: 20%;
 }
 
@@ -65,7 +68,10 @@ ul {
 /* Abaixo do Menu Bar */
 
 #belowMenu {
-  height: 100vh;
+  background-color: rgb(250, 250, 250);
+  height: 100%;
+  padding-top: 0;
+  border: 1px solid transparent;
 }
 
 #postBox {
@@ -74,12 +80,13 @@ ul {
   display: flex;
   margin: 2% auto;
   border-radius: 7px;
+  background-color: white;
 }
 
 #postImage {
   height: 100%;
   width: 60%;
-  border: 1.7px solid #dbdbdb;
+  border: 1px solid #dbdbdb;
   border-radius: 6px 0 0px 6px;
 }
 
@@ -93,9 +100,9 @@ ul {
   height: 100%;
   width: 40%;
   float: left;
-  border-right: 2px solid #dbdbdb;
-  border-bottom: 2px solid #dbdbdb;
-  border-top: 2px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  border-top: 1px solid #dbdbdb;
   border-left: 1px solid #dbdbdb;
   border-radius: 0px 6px 6px 0;
 }

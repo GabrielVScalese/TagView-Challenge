@@ -1,5 +1,5 @@
 <template>
-  <div id="fullPage" v-if="!loading">
+  <div v-if="!loading">
     <!-- Menu Bar -->
     <nav id="navBar">
       <ul id="menuContent">
