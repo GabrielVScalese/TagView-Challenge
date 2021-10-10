@@ -235,7 +235,7 @@ ul {
 
 #moreDetailPostBox {
   width: 100%;
-  height: 15%;
+  height: 13%;
   display: flex;
   align-items: center;
 }
@@ -250,7 +250,7 @@ ul {
 #moreDetailPostBox #commentCount {
   font-size: 1vw;
   font-weight: bold;
-  padding-bottom: 8%;
+  padding-bottom: 7%;
   color: black;
   font-family: Arial;
 }
