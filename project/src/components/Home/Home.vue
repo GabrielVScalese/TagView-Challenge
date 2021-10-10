@@ -55,7 +55,7 @@
                     {{ timeOfLike(comment["created_at"]) }}h
                   </span>
                   <span id="commentLikeCount">
-                    {{ comment["like_count"] }} curtidas</span
+                    {{ getLikeText(comment["like_count"]) }}</span
                   >
                 </div>
               </div>
@@ -114,8 +114,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      username: "",
-      avatar: "",
+      user: {},
       post: {},
       relatedPosts: [],
     };
@@ -125,6 +124,11 @@ export default {
       return avatar == null
         ? "https://lh3.googleusercontent.com/a/default-user=s40-c"
         : avatar;
+    },
+    getLikeText(likes) {
+      if (likes >= 2) return `${likes} curtidas`;
+      else if (likes == 1) return `${likes} curtida`;
+      else return " ";
     },
     timeOfLike(stringDate) {
       const date = new Date(stringDate);
@@ -188,15 +192,15 @@ export default {
       }
     },
   },
-  async mounted() {
+  async beforeCreate() {
     const userResponse = await axios.get("https://taggram.herokuapp.com/me");
     this.username = userResponse["data"]["username"];
     this.avatar = userResponse["data"]["avatar"];
 
-    let url = `https://taggram.herokuapp.com/post?username=${this.username}`;
-    const postResponse = await axios.get(url);
+    const postResponse = await axios.get(
+      `https://taggram.herokuapp.com/post?username=${this.username}`
+    );
     this.post = postResponse["data"];
-    console.log(this.post["comments"]);
 
     const relatedPostResponse = await axios.get(
       `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
