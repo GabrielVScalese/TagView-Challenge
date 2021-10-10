@@ -131,11 +131,13 @@ li a {
 #postAuthor {
   font-size: 14px;
   font-weight: bold;
-  padding-bottom: 3%;
+  padding-bottom: 2.6%;
+  color: black;
 }
 
 #locationPostAuthor {
   font-size: 12.9px;
+  color: black;
 }
 
 #commentsBox {
@@ -179,26 +181,30 @@ li a {
   display: inline-block;
 }
 
-#messageCommentBox span {
+#messageCommentBox #commentUser {
   font-size: 13px;
   font-family: Arial;
+  font-weight: bold;
+  color: black;
 }
 
-#messageCommentBox #commentUser {
-  font-weight: bold;
+#messageCommentBox #messageCommentUser {
+  font-size: 13px;
+  font-family: Arial;
+  color: black;
 }
 
 #messageCommentBox div {
   margin-top: 4%;
 }
 
-#dateComment {
+#timeComment {
   font-size: 13px;
   color: #8e8e8e;
 }
 
 #commentLikeCount {
-  font-size: 12px;
+  font-size: 12.6px;
   color: #8e8e8e;
   margin-left: 10px;
   font-weight: bold;
@@ -212,7 +218,7 @@ li a {
 }
 
 .like {
-  height: 2.4vh;
+  height: 2.2vh;
 }
 
 .like:hover {
@@ -226,6 +232,66 @@ li a {
 #moreDetailPostBox {
   width: 100%;
   height: 15%;
+}
+
+#moreDetailPostBox {
+  display: flex;
+  align-items: center;
+}
+
+#moreDetailPostBox div {
   text-align: left;
-  padding-top: 5.5%;
+  padding-left: 5%;
+  flex-direction: column;
+  display: flex;
+}
+
+#moreDetailPostBox #commentCount {
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 8%;
+  color: black;
+}
+
+#moreDetailPostBox #postDate {
+  font-size: 11px;
+  color: #8e8e8e;
+}
+
+#lineBox {
+  justify-content: center;
+  display: flex;
+  padding-top: 25px;
+}
+
+#lineBox div {
+  width: 150vh;
+  border: 1px solid #efefef;
+}
+
+#relatedPostsBox {
+  width: 150vh;
+  height: 50vh;
+  margin: auto;
+  text-align: left;
+  padding-top: 20px;
+}
+
+#relatedPostsBox span {
+  color: #8e8e8e;
+  font-weight: bold;
+  font-size: 14.5px;
+}
+
+#relatedPostsBox #imagesBox {
+  margin-top: 20px;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#relatedPostImage {
+  height: 280px;
+  width: 280px;
+  margin-bottom: 45px;
 }

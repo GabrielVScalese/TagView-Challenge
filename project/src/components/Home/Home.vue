@@ -47,11 +47,11 @@
               </div>
               <div id="messageCommentBox">
                 <span id="commentUser">{{ comment["user"]["username"] }} </span>
-                <span>
+                <span id="messageCommentUser">
                   {{ comment["message"] }}
                 </span>
                 <div>
-                  <span id="dateComment">
+                  <span id="timeComment">
                     {{ timeOfLike(comment["created_at"]) }}h
                   </span>
                   <span id="commentLikeCount">
@@ -65,53 +65,42 @@
                   icon="heart"
                   class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
-                  :src="liked"
                   v-if="comment['has_liked']"
                 />
                 <font-awesome-icon
                   :icon="['far', 'heart']"
                   class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
-                  :src="liked"
                   v-if="!comment['has_liked']"
                 />
               </div>
             </div>
           </div>
           <div id="moreDetailPostBox">
-            <span
-              style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black;"
-            >
-              {{ this.post["comments"].length }} comentários
-            </span>
-            <br />
-            <span
-              style="font-weight: bold; margin: 20px; font-family: Arial; font-size: 11px; color: #8E8E8E;"
-            >
-              {{ this.post["created_at"] }}
-            </span>
+            <div>
+              <span id="commentCount">
+                {{ this.post["comments"].length }} comentários
+              </span>
+              <span id="postDate">
+                {{ this.post["created_at"] }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div style="justify-content:center; display: flex; padding-top: 25px;">
-        <div style="width: 150vh; border: 1px solid #EFEFEF"></div>
+      <div id="lineBox">
+        <div></div>
       </div>
 
-      <div
-        style="width: 150vh; height: 50vh; margin: auto; text-align: left; padding-top: 20px;"
-      >
-        <span style="color: #8E8E8E; font-weight: bold; font-size: 14.5px;"
-          >Mais publicações</span
-        >
-        <div
-          style="margin-top: 20px; justify-content: space-between; display: flex; flex-wrap: wrap;"
-        >
+      <div id="relatedPostsBox">
+        <span>Mais publicações</span>
+        <div id="imagesBox">
           <img
+            id="relatedPostImage"
             v-for="(relatedPost, index) in this.relatedPosts"
             :key="index"
             :src="relatedPost.photo"
-            style="height: 280px; width: 280px; margin-bottom: 45px;"
           />
         </div>
       </div>
