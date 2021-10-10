@@ -1,7 +1,7 @@
 <template>
   <div style="height: 170vh;">
     <!-- Menu Bar -->
-    <nav style="border-bottom: 2.5px solid #DBDBDB; ">
+    <nav style="border-bottom: 2.3px solid #DBDBDB; ">
       <ul style="margin-left: 100px;">
         <li style="float: left;">
           <a><img src="../../assets/taggram.png"/></a>
@@ -22,15 +22,20 @@
     <div style="height: 100vh;">
       <!-- Box da publicacao -->
       <div
-        style="border: 2.5px solid #DBDBDB; height: 80vh; width: 150vh; margin-top: 25px; display: flex; margin: 23px auto;"
+        style=" height: 80vh; width: 150vh; margin-top: 25px; display: flex; margin: 23px auto; border-radius: 7px;"
       >
         <!-- Imagem do post -->
-        <div style="height: 100%; width: 60%;">
-          <img style="width: 100%; height: 100%;" :src="this.post['photo']" />
+        <div
+          style="height: 100%; width: 60%; border: 1.7px solid  #DBDBDB; border-radius: 6px 0 0px 6px;"
+        >
+          <img
+            style="width: 100%; height: 100%; border-radius: 6px 0px 0px 6px;"
+            :src="this.post['photo']"
+          />
         </div>
         <!-- Autor e comentarios -->
         <div
-          style="height: 100%; width: 40%; float: left; border-left: 1px solid  #DBDBDB"
+          style="height: 100%; width: 40%; float: left; border-right: 2px solid  #DBDBDB; border-bottom: 2px solid  #DBDBDB; border-top: 2px solid  #DBDBDB; border-left: 1px solid #DBDBDB;border-radius: 0px 6px 6px 0;"
         >
           <!-- Autor -->
           <div
@@ -113,10 +118,10 @@
             </div>
           </div>
           <div
-            style=" width: 100%; height: 15%; text-align: left; padding-top: 5%;"
+            style=" width: 100%; height: 15%; text-align: left; padding-top: 5.5%;"
           >
             <span
-              style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black; margin-top: 5%;"
+              style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black;"
             >
               {{ this.post["comments"].length }} comentários
             </span>
@@ -137,7 +142,7 @@
       <div
         style="width: 150vh; height: 50vh; margin: auto; text-align: left; padding-top: 20px;"
       >
-        <span style="color: #8E8E8E; font-weight: bold; font-size: 14px;"
+        <span style="color: #8E8E8E; font-weight: bold; font-size: 14.5px;"
           >Mais publicações</span
         >
         <div
@@ -165,8 +170,6 @@ export default {
       avatar: "",
       post: {},
       relatedPosts: [],
-      liked: "https://i.imgur.com/pbkWZrB.png",
-      unliked: "https://i.imgur.com/s9kfiiE.png",
     };
   },
   methods: {
@@ -213,7 +216,6 @@ export default {
           if (this.post["comments"][i]["has_liked"]) {
             const statusCode = await this.removeLike(commentUuid);
 
-            console.log(statusCode);
             if (statusCode != 200)
               window.alert(
                 "Não foi possível curtir/descurtir comentário, tente novamente"
@@ -225,7 +227,6 @@ export default {
           } else {
             const statusCode = await this.sendLike(commentUuid);
 
-            console.log(statusCode);
             if (statusCode != 200)
               window.alert(
                 "Não foi possível curtir/descurtir comentário, tente novamente"
@@ -247,6 +248,7 @@ export default {
     let url = `https://taggram.herokuapp.com/post?username=${this.username}`;
     const postResponse = await axios.get(url);
     this.post = postResponse["data"];
+    console.log(this.post["comments"]);
 
     const relatedPostResponse = await axios.get(
       `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
