@@ -1,14 +1,14 @@
 <template>
-  <div style="height: 170vh;">
+  <div id="fullPage">
     <!-- Menu Bar -->
-    <nav style="border-bottom: 2.3px solid #DBDBDB; ">
-      <ul style="margin-left: 100px;">
-        <li style="float: left;">
+    <nav id="navBar">
+      <ul id="menuContent">
+        <li style="float: left;" id="logoBox">
           <a><img src="../../assets/taggram.png"/></a>
         </li>
-        <li style="float: right; margin-right: 100px;">
-          <div style="border: 1px solid red; display: flex; margin-top: 6%;">
-            <a style="color: black; ">{{ username }}</a>
+        <li id="userBox">
+          <div>
+            <a>{{ username }}</a>
             <img
               style="border-radius: 50%; height: 30px; float: left;"
               :src="getAvatar(this.avatar)"
@@ -263,31 +263,5 @@ export default {
 </script>
 
 <style scoped>
-/* Menu Bar */
-ul {
-  list-style-type: none;
-  margin-top: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px 0px 0px;
-  text-decoration: none;
-}
-
-div.image {
-  content: url("https://cdn.fakercloud.com/avatars/mhesslow_128.jpg");
-}
-
-.like:hover {
-  cursor: pointer;
-}
+@import "./style.css";
 </style>
