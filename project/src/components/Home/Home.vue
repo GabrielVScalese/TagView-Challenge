@@ -148,10 +148,10 @@ export default {
 
       return hours > 1 ? `${hours} horas` : `${hours} hora`;
     },
-    async sendLike(commentUuid) {
+    async updateLike(type, commentUuid) {
       try {
         const response = await axios.post(
-          `https://taggram.herokuapp.com/comments/${commentUuid}/like`,
+          `https://taggram.herokuapp.com/comments/${commentUuid}/${type}`,
           { username: this.username }
         );
 
@@ -160,23 +160,12 @@ export default {
         return 500;
       }
     },
-    async removeLike(commentUuid) {
-      try {
-        const response = await axios.post(
-          `https://taggram.herokuapp.com/comments/${commentUuid}/unlike`,
-          { username: this.username }
-        );
 
-        return response.status;
-      } catch (err) {
-        return 500;
-      }
-    },
     async setLike(commentUuid, likeStatus) {
       for (let i = 0; i < this.post["comments"].length; i++) {
         if (this.post["comments"][i]["uuid"] == commentUuid) {
           if (this.post["comments"][i]["has_liked"]) {
-            const statusCode = await this.removeLike(commentUuid);
+            const statusCode = await this.updateLike("unlike", commentUuid);
 
             if (statusCode != 200)
               window.alert(
@@ -187,7 +176,7 @@ export default {
               this.post["comments"][i]["like_count"]--;
             }
           } else {
-            const statusCode = await this.sendLike(commentUuid);
+            const statusCode = await this.updateLike("like", commentUuid);
 
             if (statusCode != 200)
               window.alert(
