@@ -132,9 +132,6 @@ export default {
       else if (likes == 1) return `${likes} curtida`;
       else return "";
     },
-    dateToString(date) {
-      return `${date}`;
-    },
     timeOfLike(stringDate) {
       const date = new Date(stringDate);
       const nowDate = Date.now();
