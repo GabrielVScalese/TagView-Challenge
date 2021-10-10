@@ -128,7 +128,7 @@ export default {
     getLikeText(likes) {
       if (likes >= 2) return `${likes} curtidas`;
       else if (likes == 1) return `${likes} curtida`;
-      else return " ";
+      else return "";
     },
     timeOfLike(stringDate) {
       const date = new Date(stringDate);
