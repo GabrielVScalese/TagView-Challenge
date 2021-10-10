@@ -53,7 +53,7 @@ ul {
 #userBox a {
   color: black;
   font-family: Arial;
-  font-size: 16px;
+  font-size: 1.2vw;
 }
 
 #userBox img {
@@ -76,14 +76,14 @@ ul {
   border-radius: 7px;
 }
 
-#imagePost {
+#postImage {
   height: 100%;
   width: 60%;
   border: 1.7px solid #dbdbdb;
   border-radius: 6px 0 0px 6px;
 }
 
-#imagePost img {
+#postImage img {
   width: 100%;
   height: 100%;
   border-radius: 6px 0px 0px 6px;
@@ -128,14 +128,14 @@ ul {
 }
 
 #postAuthor {
-  font-size: 14px;
+  font-size: 1vw;
   font-weight: bold;
   padding-bottom: 2.6%;
   color: black;
 }
 
 #locationPostAuthor {
-  font-size: 12.9px;
+  font-size: 0.9vw;
   color: black;
 }
 
@@ -149,10 +149,7 @@ ul {
 
 #commentsBox ::-webkit-scrollbar {
   width: 0;
-}
-
-#commentsBox ::-webkit-scrollbar-track-piece {
-  background-color: transparent;
+  background: transparent;
 }
 
 #individualCommentBox {
@@ -163,22 +160,22 @@ ul {
   margin-bottom: 3%;
 }
 
-#imageCommentBox {
+#commentBoxImage {
   float: left;
   margin-top: 4%;
   width: 5%;
   padding-left: 15px;
 }
 
-#imageCommentBox img {
+#commentBoxImage img {
   border-radius: 50%;
-  height: 33px;
+  height: 2.4vw;
   float: left;
   margin-left: 4%;
   margin-right: 4%;
 }
 
-#messageCommentBox {
+#commentBoxMessage {
   text-align: left;
   margin-top: 4%;
   width: 70%;
@@ -187,30 +184,30 @@ ul {
   display: inline-block;
 }
 
-#messageCommentBox #commentUser {
-  font-size: 13px;
+#commentBoxMessage #commentUser {
+  font-size: 0.99vw;
   font-family: Arial;
   font-weight: bold;
   color: black;
 }
 
-#messageCommentBox #messageCommentUser {
-  font-size: 13px;
+#commentBoxMessage #commentMessage {
+  font-size: 0.98vw;
   font-family: Arial;
   color: black;
 }
 
-#messageCommentBox div {
-  margin-top: 4%;
+#commentBoxMessage div {
+  margin-top: 7%;
 }
 
 #timeComment {
-  font-size: 13px;
+  font-size: 1vw;
   color: #8e8e8e;
 }
 
 #commentLikeCount {
-  font-size: 12.6px;
+  font-size: 1vw;
   color: #8e8e8e;
   margin-left: 10px;
   font-weight: bold;
@@ -250,15 +247,17 @@ ul {
 }
 
 #moreDetailPostBox #commentCount {
-  font-size: 14px;
+  font-size: 1vw;
   font-weight: bold;
   padding-bottom: 8%;
   color: black;
+  font-family: Arial;
 }
 
 #moreDetailPostBox #postDate {
-  font-size: 11px;
+  font-size: 0.84vw;
   color: #8e8e8e;
+  font-family: Arial;
 }
 
 #lineBox {
@@ -284,6 +283,7 @@ ul {
   color: #8e8e8e;
   font-weight: bold;
   font-size: 14.5px;
+  font-family: Arial;
 }
 
 #relatedPostsBox #imagesBox {

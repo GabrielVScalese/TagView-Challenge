@@ -20,7 +20,7 @@
       <!-- Box da publicacao -->
       <div id="postBox">
         <!-- Imagem do post -->
-        <div id="imagePost">
+        <div id="postImage">
           <img :src="this.post['photo']" />
         </div>
         <!-- Autor e comentarios -->
@@ -42,12 +42,12 @@
               v-for="(comment, index) in this.post['comments']"
               :key="index"
             >
-              <div id="imageCommentBox">
+              <div id="commentBoxImage">
                 <img :src="getAvatar(comment['user']['avatar'])" />
               </div>
-              <div id="messageCommentBox">
+              <div id="commentBoxMessage">
                 <span id="commentUser">{{ comment["user"]["username"] }} </span>
-                <span id="messageCommentUser">
+                <span id="commentMessage">
                   {{ comment["message"] }}
                 </span>
                 <div>
@@ -142,9 +142,8 @@ export default {
       const hours = Math.floor(diff / (1000 * 60 * 60));
 
       if (seconds >= 60) {
-        if (minutes < 60)
-          return minutes > 1 ? `${minutes} minutos` : `${minutes} minuto`;
-      } else return seconds > 1 ? `${seconds} segundos` : `${seconds} segundo`;
+        if (minutes < 60) return `${minutes} min`;
+      } else return `${seconds} seg`;
 
       if (hours >= 24) {
         const days = Math.floor(hours / 24);
@@ -152,11 +151,11 @@ export default {
         if (days >= 7) {
           const weeks = Math.floor(days / 7);
 
-          return weeks > 1 ? `${weeks} semanas` : `${weeks} semana`;
-        } else return days > 1 ? `${days} dias` : `${days} dia`;
+          return `${weeks} sem`;
+        } else return `${days} d`;
       }
 
-      return hours > 1 ? `${hours} horas` : `${hours} hora`;
+      return `${hours} h`;
     },
     async updateLike(type, commentUuid) {
       try {
