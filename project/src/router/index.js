@@ -8,7 +8,10 @@ const routes = [
   {
     path: "/",
     name: "Home",
-
+    meta: {
+      title: "Taggram",
+      icon: null,
+    },
     component: Home,
   },
 ];

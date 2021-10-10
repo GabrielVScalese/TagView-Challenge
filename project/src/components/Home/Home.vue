@@ -15,7 +15,7 @@
       </ul>
     </nav>
 
-    <!-- Box abaixo menu -->
+    <!-- Box abaixo do menu -->
     <div id="belowMenu">
       <!-- Box da publicacao -->
       <div id="postBox">
@@ -36,6 +36,7 @@
               </span>
             </div>
           </div>
+          <!-- Comentarios  -->
           <div id="commentsBox">
             <div
               id="individualCommentBox"
@@ -76,6 +77,7 @@
               </div>
             </div>
           </div>
+          <!-- Contagem de comentarios e data do post -->
           <div id="moreDetailPostBox">
             <div>
               <span id="commentCount">
@@ -89,10 +91,12 @@
         </div>
       </div>
 
+      <!-- Linha fina de separacao -->
       <div id="lineBox">
         <div></div>
       </div>
 
+      <!-- Box de exibicao de posts relacionados -->
       <div id="relatedPostsBox">
         <span>Mais publicações</span>
         <div id="imagesBox">
@@ -112,6 +116,7 @@
 import axios from "axios";
 
 export default {
+  title: "teste",
   data() {
     return {
       username: "",
@@ -122,16 +127,19 @@ export default {
     };
   },
   methods: {
+    // Retorna o avatar de algum usuario (se nao tiver avatar, retorna um avatar default)
     getAvatar(avatar) {
       return avatar == null
         ? "https://lh3.googleusercontent.com/a/default-user=s40-c"
         : avatar;
     },
+    // Retorna o texto que indicara a quantidade de curtidas
     getLikeText(likes) {
       if (likes >= 2) return `${likes} curtidas`;
       else if (likes == 1) return `${likes} curtida`;
       else return "";
     },
+    // Retorna o texto que indicara o tempo de um comentario
     timeOfLike(stringDate) {
       const date = new Date(stringDate);
       const nowDate = Date.now();
@@ -157,6 +165,7 @@ export default {
 
       return `${hours} h`;
     },
+    // Realiza uma requisicao para alterar o like em um comentario
     async updateLike(type, commentUuid) {
       try {
         const response = await axios.post(
@@ -169,7 +178,7 @@ export default {
         return 500;
       }
     },
-
+    // Seta para true ou false o like, enviando a requisicao para API
     async setLike(commentUuid, likeStatus) {
       for (let i = 0; i < this.post["comments"].length; i++) {
         if (this.post["comments"][i]["uuid"] == commentUuid) {
@@ -200,6 +209,7 @@ export default {
       }
     },
   },
+  // Responses necessarios para a construcao da pagina
   async beforeCreate() {
     const userResponse = await axios.get("https://taggram.herokuapp.com/me");
     this.username = userResponse["data"]["username"];
@@ -215,9 +225,8 @@ export default {
     );
     const posts = relatedPostResponse.data;
 
-    for (let i = 0; i < posts.length; i++) {
+    for (let i = 0; i < posts.length; i++)
       if (posts[i]["comment_count"] >= 3) this.relatedPosts.push(posts[i]);
-    }
 
     this.loading = false;
   },
