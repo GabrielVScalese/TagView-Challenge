@@ -3,112 +3,73 @@
     <!-- Menu Bar -->
     <nav id="navBar">
       <ul id="menuContent">
-        <li style="float: left;" id="logoBox">
+        <li id="logoBox">
           <a><img src="../../assets/taggram.png"/></a>
         </li>
         <li id="userBox">
           <div>
             <a>{{ username }}</a>
-            <img
-              style="border-radius: 50%; height: 30px; float: left;"
-              :src="getAvatar(this.avatar)"
-            />
+            <img :src="getAvatar(this.avatar)" />
           </div>
         </li>
       </ul>
     </nav>
 
     <!-- Box abaixo menu -->
-    <div style="height: 100vh;">
+    <div id="belowMenu">
       <!-- Box da publicacao -->
-      <div
-        style=" height: 80vh; width: 150vh; margin-top: 25px; display: flex; margin: 23px auto; border-radius: 7px;"
-      >
+      <div id="postBox">
         <!-- Imagem do post -->
-        <div
-          style="height: 100%; width: 60%; border: 1.7px solid  #DBDBDB; border-radius: 6px 0 0px 6px;"
-        >
-          <img
-            style="width: 100%; height: 100%; border-radius: 6px 0px 0px 6px;"
-            :src="this.post['photo']"
-          />
+        <div id="imagePost">
+          <img :src="this.post['photo']" />
         </div>
         <!-- Autor e comentarios -->
-        <div
-          style="height: 100%; width: 40%; float: left; border-right: 2px solid  #DBDBDB; border-bottom: 2px solid  #DBDBDB; border-top: 2px solid  #DBDBDB; border-left: 1px solid #DBDBDB;border-radius: 0px 6px 6px 0;"
-        >
+        <div id="contentPostBox">
           <!-- Autor -->
-          <div
-            style="border-bottom: 1px solid  #DBDBDB; width: 100%; height: 15%;"
-          >
-            <img
-              style="border-radius: 50%; height: 30px; float: left; margin-top: 5%; margin-left: 4%; margin-right: 4%;"
-              :src="getAvatar(this.post['user']['avatar'])"
-            />
-            <div style="float: left; text-align: left; margin-top: 5%;">
-              <span style="font-weight: bold; font-size: 14.5px;">{{
-                this.post["user"]["username"]
-              }}</span>
-              <br />
-              <span style="font-size: 13px;">
+          <div id="authorBox">
+            <img :src="getAvatar(this.post['user']['avatar'])" />
+            <div>
+              <span id="postAuthor">{{ this.post["user"]["username"] }}</span>
+              <span id="locationPostAuthor">
                 {{ this.post["location"]["city"] }},
                 {{ this.post["location"]["country"] }}
               </span>
             </div>
           </div>
-          <div
-            style="border-bottom: 1px solid #DBDBDB; width: 100%; height: 70%; text-align: center; overflow: scroll; overflow-x: hidden;"
-          >
+          <div id="commentsBox">
             <div
+              id="individualCommentBox"
               v-for="(comment, index) in this.post['comments']"
               :key="index"
-              style="height: auto; overflow: hidden; width: 100%; flex-wrap: wrap; margin-bottom: 10px;"
             >
-              <div
-                style="float: left; margin-top: 4%; width: 5%; padding-left: 13px; "
-              >
-                <img
-                  style="border-radius: 50%; height: 30px; float: left; margin-left: 4%; margin-right: 4%;"
-                  :src="getAvatar(comment['user']['avatar'])"
-                />
+              <div id="imageCommentBox">
+                <img :src="getAvatar(comment['user']['avatar'])" />
               </div>
-              <div
-                style="float: left; text-align: left; margin-top: 4%; width: 70%; padding-left: 25px; word-wrap: break-word; display: inline-block;"
-              >
+              <div id="messageCommentBox">
+                <span id="commentUser">{{ comment["user"]["username"] }} </span>
+                <span>
+                  {{ comment["message"] }}
+                </span>
                 <div>
-                  <span
-                    style="font-size: 13px; font-weight: bold; font-family: Arial;"
-                    >{{ comment["user"]["username"] }}
-                  </span>
-                  <span style="font-size: 13px; font-family: Arial;">
-                    {{ comment["message"] }}
-                  </span>
-                </div>
-                <div style="margin-top: 4%;">
-                  <span style="font-size: 13px; color: #8E8E8E;">
+                  <span id="dateComment">
                     {{ timeOfLike(comment["created_at"]) }}h
                   </span>
-                  <span
-                    style="font-size: 12px; color: #8E8E8E; margin-left: 10px; font-weight: bold;"
-                  >
+                  <span id="commentLikeCount">
                     {{ comment["like_count"] }} curtidas</span
                   >
                 </div>
               </div>
-              <div
-                style="width: 5%; float: right; margin-top: 7%; padding-right: 12px;"
-              >
+              <div id="likeBox">
                 <font-awesome-icon
+                  id="likeIcon"
                   icon="heart"
                   class="like"
-                  style="color: #ED4956; height: 2.4vh;"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   :src="liked"
                   v-if="comment['has_liked']"
                 />
                 <font-awesome-icon
                   :icon="['far', 'heart']"
-                  style="height: 2.4vh;"
                   class="like"
                   v-on:click="setLike(comment['uuid'], comment['has_liked'])"
                   :src="liked"
@@ -117,9 +78,7 @@
               </div>
             </div>
           </div>
-          <div
-            style=" width: 100%; height: 15%; text-align: left; padding-top: 5.5%;"
-          >
+          <div id="moreDetailPostBox">
             <span
               style="font-weight: bold;  margin: 20px; font-family: Arial; font-size: 13px; color: black;"
             >

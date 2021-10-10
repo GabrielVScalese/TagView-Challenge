@@ -49,13 +49,183 @@ li a {
 #userBox div {
   border: 1px solid red;
   display: flex;
+  align-items: center;
+  display: flex;
 }
 
 #userBox a {
   color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Estilo dos coracoes para like ou dislike */
+#userBox img {
+  border-radius: 50%;
+  height: 5.5vh;
+}
+
+/* Abaixo do Menu Bar */
+
+#belowMenu {
+  height: 100vh;
+}
+
+#postBox {
+  height: 80vh;
+  width: 150vh;
+  display: flex;
+  margin: 2% auto;
+  border-radius: 7px;
+}
+
+#imagePost {
+  height: 100%;
+  width: 60%;
+  border: 1.7px solid #dbdbdb;
+  border-radius: 6px 0 0px 6px;
+}
+
+#imagePost img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px 0px 0px 6px;
+}
+
+#contentPostBox {
+  height: 100%;
+  width: 40%;
+  float: left;
+  border-right: 2px solid #dbdbdb;
+  border-bottom: 2px solid #dbdbdb;
+  border-top: 2px solid #dbdbdb;
+  border-left: 1px solid #dbdbdb;
+  border-radius: 0px 6px 6px 0;
+}
+
+#authorBox {
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  height: 15%;
+  align-items: center;
+  display: flex;
+}
+
+#authorBox img {
+  border-radius: 50%;
+  height: 30px;
+  float: left;
+  margin-left: 4.5%;
+}
+
+#authorBox div {
+  float: left;
+  text-align: left;
+  margin-left: 4%;
+  display: flex;
+  flex-direction: column;
+}
+
+#authorBox div span {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#postAuthor {
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 3%;
+}
+
+#locationPostAuthor {
+  font-size: 12.9px;
+}
+
+#commentsBox {
+  border-bottom: 1px solid #dbdbdb;
+  width: 100%;
+  height: 70%;
+  text-align: center;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#individualCommentBox {
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 3%;
+}
+
+#imageCommentBox {
+  float: left;
+  margin-top: 4%;
+  width: 5%;
+  padding-left: 13px;
+}
+
+#imageCommentBox img {
+  border-radius: 50%;
+  height: 33px;
+  float: left;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+#messageCommentBox {
+  text-align: left;
+  margin-top: 4%;
+  width: 70%;
+  padding-left: 4%;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
+#messageCommentBox span {
+  font-size: 13px;
+  font-family: Arial;
+}
+
+#messageCommentBox #commentUser {
+  font-weight: bold;
+}
+
+#messageCommentBox div {
+  margin-top: 4%;
+}
+
+#dateComment {
+  font-size: 13px;
+  color: #8e8e8e;
+}
+
+#commentLikeCount {
+  font-size: 12px;
+  color: #8e8e8e;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+#likeBox {
+  width: 5%;
+  float: right;
+  margin-top: 7%;
+  padding-right: 12px;
+}
+
+.like {
+  height: 2.4vh;
+}
+
 .like:hover {
   cursor: pointer;
+}
+
+#likeIcon {
+  color: #ed4956;
+}
+
+#moreDetailPostBox {
+  width: 100%;
+  height: 15%;
+  text-align: left;
+  padding-top: 5.5%;
 }
