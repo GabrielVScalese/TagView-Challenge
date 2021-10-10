@@ -114,7 +114,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      user: {},
+      username: "",
+      avatar: "",
       post: {},
       relatedPosts: [],
     };
@@ -130,11 +131,22 @@ export default {
       else if (likes == 1) return `${likes} curtida`;
       else return "";
     },
+    dateToString(date) {
+      return `${date}`;
+    },
     timeOfLike(stringDate) {
       const date = new Date(stringDate);
       const nowDate = Date.now();
+
       const diff = Math.abs(date - nowDate);
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.ceil(diff / (1000 * 60));
       const hours = Math.floor(diff / (1000 * 60 * 60));
+
+      if (seconds >= 60) {
+        if (minutes < 60)
+          return minutes > 1 ? `${minutes} minutos` : `${minutes} minuto`;
+      } else return seconds > 1 ? `${seconds} segundos` : `${seconds} segundo`;
 
       if (hours >= 24) {
         const days = Math.floor(hours / 24);
