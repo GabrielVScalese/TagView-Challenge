@@ -52,7 +52,7 @@
                 </span>
                 <div>
                   <span id="timeComment">
-                    {{ timeOfLike(comment["created_at"]) }}h
+                    {{ timeOfLike(comment["created_at"]) }}
                   </span>
                   <span id="commentLikeCount">
                     {{ getLikeText(comment["like_count"]) }}</span
@@ -134,9 +134,19 @@ export default {
       const date = new Date(stringDate);
       const nowDate = Date.now();
       const diff = Math.abs(date - nowDate);
-      const hours = Math.ceil(diff / (1000 * 60 * 60));
+      const hours = Math.floor(diff / (1000 * 60 * 60));
 
-      return hours;
+      if (hours >= 24) {
+        const days = Math.floor(hours / 24);
+
+        if (days >= 7) {
+          const weeks = Math.floor(days / 7);
+
+          return weeks > 1 ? `${weeks} semanas` : `${weeks} semana`;
+        } else return days > 1 ? `${days} dias` : `${days} dia`;
+      }
+
+      return hours > 1 ? `${hours} horas` : `${hours} hora`;
     },
     async sendLike(commentUuid) {
       try {
