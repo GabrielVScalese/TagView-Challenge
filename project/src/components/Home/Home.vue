@@ -150,8 +150,8 @@ export default {
       const hours = Math.floor(diff / (1000 * 60 * 60));
 
       if (seconds >= 60) {
-        if (minutes < 60) return `${minutes} m`;
-      } else return `${seconds} s`;
+        if (minutes < 60) return `${minutes}m`;
+      } else return `${seconds}s`;
 
       if (hours >= 24) {
         const days = Math.floor(hours / 24);
@@ -159,11 +159,11 @@ export default {
         if (days >= 7) {
           const weeks = Math.floor(days / 7);
 
-          return `${weeks} sem`;
-        } else return `${days} d`;
+          return `${weeks}sem`;
+        } else return `${days}d`;
       }
 
-      return `${hours} h`;
+      return `${hours}h`;
     },
     // Realiza uma requisicao para alterar o like em um comentario
     async updateLike(type, commentUuid) {
