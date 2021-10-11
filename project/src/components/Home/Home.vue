@@ -150,8 +150,8 @@ export default {
       const hours = Math.floor(diff / (1000 * 60 * 60));
 
       if (seconds >= 60) {
-        if (minutes < 60) return `${minutes} min`;
-      } else return `${seconds} seg`;
+        if (minutes < 60) return `${minutes} m`;
+      } else return `${seconds} s`;
 
       if (hours >= 24) {
         const days = Math.floor(hours / 24);
