@@ -276,7 +276,8 @@ ul {
 
 #lineBox div {
   width: 150vh;
-  border: 1px solid #efefef;
+  height: 1px;
+  background-color: #efefef;
 }
 
 #relatedPostsBox {
