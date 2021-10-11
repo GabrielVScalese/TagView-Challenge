@@ -73,9 +73,9 @@ ul {
 }
 
 #postBox {
-  max-width: 150vh;
   height: 100vh;
-  width: 150vh;
+  width: 100%;
+  max-width: 150vh;
   display: flex;
   margin: 2% auto;
   border-radius: 7px;
@@ -276,14 +276,14 @@ ul {
 }
 
 #lineBox div {
+  width: 100%;
   max-width: 150vh;
-  width: 150vh;
   border: 1px solid #efefef;
 }
 
 #relatedPostsBox {
+  width: 100%;
   max-width: 150vh;
-  width: 150vh;
   height: 50vh;
   margin: auto;
   text-align: left;
