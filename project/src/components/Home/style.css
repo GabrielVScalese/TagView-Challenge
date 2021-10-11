@@ -150,7 +150,7 @@ ul {
   width: 100%;
   height: 75%;
   text-align: center;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #commentsBox ::-webkit-scrollbar {
