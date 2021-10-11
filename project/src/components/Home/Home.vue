@@ -1,7 +1,7 @@
 <template>
   <div v-if="!loading">
     <!-- Menu Bar -->
-    <nav id="navBar">
+    <div id="navBar">
       <ul id="menuContent">
         <li id="logoBox">
           <a><img src="../../assets/taggram.png"/></a>
@@ -13,7 +13,7 @@
           </div>
         </li>
       </ul>
-    </nav>
+    </div>
 
     <!-- Box abaixo do menu -->
     <div id="belowMenu">
