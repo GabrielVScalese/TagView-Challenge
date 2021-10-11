@@ -73,6 +73,7 @@ ul {
 }
 
 #postBox {
+  max-width: 150vh;
   height: 100vh;
   width: 150vh;
   display: flex;
@@ -275,6 +276,7 @@ ul {
 }
 
 #lineBox div {
+  max-width: 150vh;
   width: 150vh;
   border: 1px solid #efefef;
 }
