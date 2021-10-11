@@ -8,8 +8,6 @@ body {
 #navBar {
   border-bottom: 1.8px solid #dbdbdb;
   width: 100%;
-  padding-top: 1%;
-  padding-bottom: 0.5%;
   background-color: white;
   margin: 0;
   height: 40px;
@@ -17,7 +15,6 @@ body {
 
 ul {
   list-style-type: none;
-  margin-top: 0;
   padding: 0;
   overflow: hidden;
 }
@@ -26,7 +23,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   display: flex;
-  margin: 0;
+  margin-top: 9px;
 }
 
 #logoBox {
@@ -34,8 +31,10 @@ ul {
 }
 
 #logoBox a img {
-  height: 2.3vw;
+  height: 2.23vw;
   width: 7vw;
+  align-self: center;
+  display: flex;
 }
 
 #userBox {
@@ -54,12 +53,12 @@ ul {
 #userBox a {
   color: black;
   font-family: Arial;
-  font-size: 1.1vw;
+  font-size: 1.06vw;
 }
 
 #userBox img {
   border-radius: 50%;
-  height: 2vw;
+  height: 1.9vw;
   margin-left: 10%;
 }
 
