@@ -81,7 +81,7 @@
           <div id="moreDetailPostBox">
             <div>
               <span id="commentCount">
-                {{ this.post["comments"].length }} comentários
+                {{ getCommentCounterText(this.post["comments"].length) }}
               </span>
               <span id="postDate">
                 {{ this.post["created_at"] }}
@@ -116,7 +116,6 @@
 import axios from "axios";
 
 export default {
-  title: "teste",
   data() {
     return {
       username: "",
@@ -138,6 +137,12 @@ export default {
       if (likes >= 2) return `${likes} curtidas`;
       else if (likes == 1) return `${likes} curtida`;
       else return "";
+    },
+    // Retorna o texto que indicara a quantidade de comentarios
+    getCommentCounterText(commentCount) {
+      if (commentCount >= 2) return `${commentCount} comentários`;
+      else if (commentCount == 1) return `${commentCount} comentário`;
+      else return "Sem comentários";
     },
     // Retorna o texto que indicara o tempo de um comentario
     timeOfLike(stringDate) {
