@@ -150,13 +150,14 @@ ul {
   width: 100%;
   height: 75%;
   text-align: center;
-  overflow-y: auto;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-#commentsBox ::-webkit-scrollbar {
+/* #commentsBox ::-webkit-scrollbar {
   width: 0;
   background: transparent;
-}
+} */
 
 #individualCommentBox {
   height: auto;
