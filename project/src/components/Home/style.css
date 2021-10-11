@@ -280,6 +280,7 @@ ul {
 }
 
 #relatedPostsBox {
+  max-width: 150vh;
   width: 150vh;
   height: 50vh;
   margin: auto;
