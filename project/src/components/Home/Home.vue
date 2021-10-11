@@ -219,6 +219,7 @@ export default {
       `https://taggram.herokuapp.com/post?username=${this.username}`
     );
     this.post = postResponse["data"];
+    console.log(this.post["comments"]);
 
     const relatedPostResponse = await axios.get(
       `https://taggram.herokuapp.com/posts/${this.post["uuid"]}/related`
