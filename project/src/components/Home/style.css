@@ -22,7 +22,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   display: flex;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 #logoBox {
@@ -30,8 +30,8 @@ ul {
 }
 
 #logoBox a img {
-  height: 2.23vw;
-  width: 7vw;
+  height: 2.4vw;
+  width: 6.2vw;
   align-self: center;
   display: flex;
 }
