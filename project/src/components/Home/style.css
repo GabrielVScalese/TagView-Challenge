@@ -171,7 +171,7 @@ ul {
 #commentBoxImage {
   float: left;
   margin-top: 12px;
-  width: 5%;
+  width: 20px;
   padding-left: 16px;
 }
 
@@ -185,8 +185,8 @@ ul {
 #commentBoxMessage {
   text-align: left;
   margin-top: 12px;
-  width: 65%;
-  padding-left: 9px;
+  width: 225px;
+  padding-left: 12px;
   word-wrap: break-word;
   display: inline-block;
 }
@@ -223,7 +223,7 @@ ul {
 }
 
 #likeBox {
-  width: 5%;
+  width: 17px;
   float: right;
   margin-top: 7%;
   padding-right: 14px;
@@ -280,7 +280,6 @@ ul {
 #relatedPostsBox {
   width: 933px;
   height: 644px;
-  margin: auto;
   text-align: left;
   padding-top: 20px;
 }
