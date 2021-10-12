@@ -6,10 +6,12 @@ body {
 /* Menu Bar */
 
 #navBar {
+  position: absolute;
+  width: 1152px;
+  height: 54px;
   border-bottom: 1.8px solid #dbdbdb;
   width: 100%;
   background-color: white;
-  height: 54px;
 }
 
 ul {
@@ -73,7 +75,7 @@ ul {
   width: 933px;
   height: 598px;
   display: flex;
-  margin: 30px auto;
+  margin: 85px auto;
   border-radius: 7px;
   background-color: white;
 }
