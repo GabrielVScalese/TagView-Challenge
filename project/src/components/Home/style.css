@@ -7,10 +7,9 @@ body {
 
 #navBar {
   position: absolute;
-  width: 1152px;
+  width: 100%;
   height: 54px;
   border-bottom: 1.8px solid #dbdbdb;
-
   background-color: white;
 }
 
@@ -66,16 +65,18 @@ ul {
 
 #belowMenu {
   background-color: rgb(250, 250, 250);
-  height: 235vh;
   padding-top: 0;
   border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 #postBox {
   width: 933px;
   height: 598px;
   display: flex;
-  margin: 85px auto;
+  margin: 85px 0 0 0;
   border-radius: 7px;
   background-color: white;
 }
@@ -268,13 +269,8 @@ ul {
   font-family: Arial;
 }
 
-#lineBox {
-  justify-content: center;
-  display: flex;
-  padding-top: 25px;
-}
-
-#lineBox div {
+#line {
+  margin-top: 50px;
   width: 933px;
   height: 1px;
   background-color: #efefef;

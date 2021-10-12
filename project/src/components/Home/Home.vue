@@ -92,9 +92,7 @@
       </div>
 
       <!-- Linha fina de separacao -->
-      <div id="lineBox">
-        <div></div>
-      </div>
+      <div id="line"></div>
 
       <!-- Box de exibicao de posts relacionados -->
       <div id="relatedPostsBox">
