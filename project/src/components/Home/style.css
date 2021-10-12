@@ -19,12 +19,13 @@ ul {
 }
 
 #menuContent {
-  align-items: center;
   justify-content: space-between;
   display: flex;
+  margin-top: 0;
 }
 
 #logoBox {
+  margin-top: 15px;
   margin-left: 108px;
 }
 
@@ -36,6 +37,7 @@ ul {
 }
 
 #userBox {
+  margin-top: 10px;
   margin-right: 130px;
 }
 
