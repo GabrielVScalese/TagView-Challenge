@@ -97,7 +97,7 @@ ul {
 
 #contentPostBox {
   height: 100%;
-  width: 37%;
+  width: 334px;
   float: left;
   border-right: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb;
@@ -108,7 +108,7 @@ ul {
 
 #authorBox {
   border-bottom: 1px solid #dbdbdb;
-  width: 100%;
+  width: 334px;
   height: 73px;
   align-items: center;
   display: flex;
@@ -149,7 +149,7 @@ ul {
 #commentsBox {
   padding-top: 12px;
   border-bottom: 1px solid #dbdbdb;
-  width: 335px;
+  width: 334px;
   height: 449px;
   text-align: center;
   overflow-y: scroll;
