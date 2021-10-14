@@ -11,7 +11,7 @@ Uma aplicação que simula uma rede social, proposta por TagView em https://gith
 
 # Funcionamento da aplicação
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/57220669/137349897-806de598-d99d-4465-bb34-869fd2621c91.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/57220669/137350686-8ed8b0de-37f4-4066-a665-ace52ce76bbf.gif)
 
 
 
