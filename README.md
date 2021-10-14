@@ -4,7 +4,9 @@ Uma aplicação que simula uma rede social, proposta por TagView em https://gith
 # Setup do Projeto
 
 1 - Crie uma pasta e clone o projeto a partir do comando `git clone https://github.com/GabrielVScalese/TagView-Challenge.git`.
+
 2 - Dentro da pasta, inicialize as dependências, digitando o comando `yarn install`.
+
 3 - Agora, para rodar a aplicação, basta digitar o comando `yarn serve`!.
 
 # Funcionamento da aplicação
