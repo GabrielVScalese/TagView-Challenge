@@ -7,7 +7,7 @@ Uma aplicação que simula uma rede social, proposta por TagView em https://gith
 
 2 - Dentro da pasta, inicialize as dependências, digitando o comando `yarn install`.
 
-3 - Agora, para rodar a aplicação, basta digitar o comando `yarn serve`!.
+3 - Agora, para rodar a aplicação, basta digitar o comando `yarn serve`.
 
 # Funcionamento da aplicação
 
